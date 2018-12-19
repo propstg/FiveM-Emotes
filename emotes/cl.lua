@@ -70,20 +70,8 @@ function cancelEmoteNow() -- Cancels the emote immediately
 end
 
 function displayEmotes()
-    local index = 0 -- Current index
-    local display = "^7" -- Text to display
-
-    for name, value in pairs(emotes) do -- Adding the emote names to the display var
-        index = index + 1
-        if index == 1 then
-            display = display..name
-        else
-            display = display..", "..name
-        end
-    end
-
     TriggerEvent("chatMessage", "EMOTES", {255,0,0}, "") -- Saying "EMOTES:" in red
-    TriggerEvent("chatMessage", "", {0,0,0}, display) -- Displaying the emotes in white
+    TriggerEvent("chatMessage", "", {0,0,0}, '^7' .. emoteNames) -- Displaying the emotes in white
 end
 function playEmote(emoteDic) -- Plays an emote from the given name dictionary
     if not DoesEntityExist(GetPlayerPed(-1)) then -- Return of the ped doesn't exist
