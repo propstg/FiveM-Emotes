@@ -31,6 +31,20 @@ local emotes = {
 
 ------------------------------------------------------------------------------------------------]]--
 
+local function createListOfEmoteNames()
+    local emoteNames = {}
+
+    for emoteName, _ in pairs(emotes) do
+        table.insert(emoteNames, emoteName)
+    end
+
+    return table.concat(emoteNames, ', ')
+end
+
+local emoteNames = createListOfEmoteNames()
+
+TriggerEvent('chat:addSuggestion', '/emote', 'Perform an emote.', {{name = 'emote', help = 'Available emotes: ' .. emoteNames}})
+
 -- Draws a simple notification
 function drawNotification(text)
     SetNotificationTextEntry("STRING")
