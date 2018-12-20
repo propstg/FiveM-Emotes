@@ -25,7 +25,7 @@ end
 
 function createListOfEmoteNames()
     local emoteNames = {}
-    for emoteName, _ in pairs(emotes) do
+    for emoteName, _ in pairs(Config.Emotes) do
         table.insert(emoteNames, emoteName)
     end
     return table.concat(emoteNames, ', ')
@@ -56,7 +56,7 @@ end
 function invokeHandler(emoteDictionary)
     if not isEmoteDefinedInDictionary(emoteDictionary) then
         TriggerEvent('chatMessage', 'ERROR', {255,0,0}, 'Invalid emote name')
-    else if playEmoteFromDictionary(Config.Emotes[emoteDictionary]) then
+    elseif playEmoteFromDictionary(Config.Emotes[emoteDictionary]) then
         drawSimpleNotification('Playing the emote "'..emoteDictionary..'"')
     end
 end
